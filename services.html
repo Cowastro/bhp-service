@@ -12,30 +12,51 @@
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
   <style>
-    /* spokojne, “massively-friendly” poprawki */
+    /* Minimal, Massively-friendly */
+
+    /* CTA + mała nawigacja (po pakietach, nie w hero) */
+    .section-nav {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(0,0,0,0.12);
+      text-align: center;
+      opacity: 0.95;
+    }
+    .section-nav .actions.special {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin: 0.75rem 0 0;
+    }
+    .section-nav .actions.special li { padding: 0; margin: 0; }
+
+    /* Krótki note-box (bez ściany tekstu) */
     .note-box {
-      background: #f8f9fa;
-      border-left: 5px solid rgba(0,0,0,0.25);
-      padding: 1.2rem;
-      margin: 1.5rem 0;
-      border-radius: 6px;
+      background: rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.10);
+      border-radius: 8px;
+      padding: 1rem 1.15rem;
+      margin: 1.25rem 0;
       font-size: 0.98rem;
     }
 
-    .cols {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
+    /* Tabela: scroll na mobile */
+    .table-scroll {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 8px;
+      background: rgba(0,0,0,0.02);
+      margin: 1.25rem 0 0.75rem;
     }
-    @media (min-width: 768px) {
-      .cols { grid-template-columns: 1fr 1fr; }
-    }
-
     .comparison-table {
       width: 100%;
       border-collapse: collapse;
-      margin: 2rem 0;
+      margin: 0;
       font-size: 0.98rem;
+      min-width: 760px; /* wymusza przewijanie na telefonie */
     }
     .comparison-table th, .comparison-table td {
       border: 1px solid rgba(0,0,0,0.15);
@@ -52,13 +73,19 @@
       font-weight: 600;
       width: 34%;
     }
-
     .price {
       font-weight: 800;
       letter-spacing: 0.5px;
       white-space: nowrap;
     }
+    .table-hint {
+      font-size: 0.9rem;
+      opacity: 0.75;
+      text-align: center;
+      margin: 0 0 1.25rem;
+    }
 
+    /* FAQ */
     .faq details {
       margin: 0.8rem 0;
       padding: 1rem;
@@ -72,15 +99,10 @@
       outline: none;
     }
 
-    /* mini-nav pod hero */
-    #services-nav .actions.special {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.75rem;
-      margin-top: 1.25rem;
-    }
-    #services-nav .actions.special li { padding: 0; margin: 0; }
+    .pack-line { margin: 0.55rem 0; }
+    .pack-meta { margin-top: 0.85rem; opacity: 0.9; font-size: 0.95rem; }
+
+    .back-top { text-align:center; margin-top:1.25rem; opacity:0.85; }
   </style>
 </head>
 
@@ -92,7 +114,7 @@
     <a href="index.html" class="logo">BHP Services</a>
   </header>
 
-  <!-- Nav (jak na głównej, tylko nazwy porządkujemy) -->
+  <!-- Nav -->
   <nav id="nav">
     <ul class="links">
       <li><a href="index.html">Start</a></li>
@@ -110,159 +132,237 @@
   <!-- Main -->
   <div id="main">
 
-    <!-- Featured -->
-    <article class="post featured">
+    <!-- HERO (bez nawigacji “pulpitu”) -->
+    <article class="post featured" id="top">
       <header class="major">
         <span class="date">Pakiety BHP</span>
-        <h1>Pakiety BHP: porządek, dokumenty i spokój w firmie</h1>
+        <h1>Pakiety BHP: porządek w dokumentach i spokój w firmie</h1>
 
-       <p style="font-size:1.25rem; line-height:1.55; margin:1.2rem 0 1.4rem;">
-  To nie jest „sprzedaż papierów”. Robimy BHP w formie procesu: <strong>szkolenia</strong>,
-  <strong>oceny ryzyka</strong> i <strong>instrukcje stanowiskowe</strong> dopasowane do realnych warunków pracy.<br />
-  Podaj liczbę pracowników i branżę — dobierzemy pakiet i jasno pokażemy, co wchodzi w zakres.
-</p>
+        <p style="font-size:1.15rem; line-height:1.6; margin:1.1rem 0 0;">
+          Robimy BHP w formie procesu: <strong>szkolenia</strong>, <strong>oceny ryzyka</strong> i
+          <strong>instrukcje stanowiskowe</strong> dopasowane do realnych warunków pracy.
+          Działamy lokalnie: <strong>Płońsk i okolice</strong> (dojazd w cenie).
+        </p>
 
-        <ul class="actions special">
+        <ul class="actions special" style="margin-top:1.25rem;">
           <li><a href="request.html" class="button primary">Zgłoś firmę</a></li>
-          <li><a href="#pakiety" class="button scrolly">Zobacz pakiety BHP</a></li>
+          <li><a href="#pakiety" class="button scrolly">Zobacz pakiety</a></li>
         </ul>
       </header>
     </article>
 
-    <!-- Porównanie pakietów -->
+    <!-- PAKIETY – najpierw opis, potem tabela -->
     <article class="post" id="pakiety">
       <header class="major">
         <h2>Pakiety BHP</h2>
         <p>
-  Pakiet obejmuje szkolenia oraz opracowanie ocen ryzyka i instrukcji dla określonej liczby stanowisk.
-  W praktyce: dowozimy kompletny zestaw do wdrożenia i porządkujemy BHP w firmie.
-  Nadwyżki liczymy według prostych stawek — bez zaskoczeń.
-</p>
-
+          Wybierasz pakiet według liczby pracowników i liczby stanowisk.
+          Jeśli firma rośnie — dopłacasz tylko za nadwyżki według prostych stawek.
+        </p>
       </header>
 
-      <table class="comparison-table">
-        <thead>
-          <tr>
-            <th>Zakres</th>
-            <th>START</th>
-            <th>FIRMA</th>
-            <th>PRO</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Cena*</td>
-            <td class="price">1 650 zł</td>
-            <td class="price">3 500 zł</td>
-            <td class="price">7 000 zł</td>
-          </tr>
-          <tr>
-            <td>Szkolenia BHP (pracownicy)</td>
-            <td>do 5</td>
-            <td>do 10</td>
-            <td>do 20</td>
-          </tr>
-          <tr>
-            <td>Ocena ryzyka (stanowiska)</td>
-            <td>do 2</td>
-            <td>do 3</td>
-            <td>do 5</td>
-          </tr>
-          <tr>
-            <td>Instrukcje stanowiskowe</td>
-            <td>do 2</td>
-            <td>do 3</td>
-            <td>do 5</td>
-          </tr>
-          <tr>
-            <td>Dojazd + analiza na miejscu</td>
-            <td>✔</td>
-            <td>✔</td>
-            <td>✔</td>
-          </tr>
-          <tr>
-            <td>Komplet dokumentów do wdrożenia</td>
-            <td>✔</td>
-            <td>✔</td>
-            <td>✔</td>
-          </tr>
-          <tr>
-            <td>Zwykle realizacja</td>
-            <td>3–5 dni</td>
-            <td>5–7 dni</td>
-            <td>7–10 dni</td>
-          </tr>
-          <tr>
-            <td>Wartość usług osobno (orientacyjnie)</td>
-            <td>~3 100 zł</td>
-            <td>~5 400 zł</td>
-            <td>~10 000 zł</td>
-          </tr>
-          <tr>
-            <td>Zamów</td>
-            <td><a href="request.html?pakiet=START" class="button small">Zamów START</a></td>
-            <td><a href="request.html?pakiet=FIRMA" class="button small">Zamów FIRMA</a></td>
-            <td><a href="request.html?pakiet=PRO" class="button small">Zamów PRO</a></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="note-box">
+        Pakiet obejmuje szkolenia oraz przygotowanie ocen ryzyka i instrukcji dla określonej liczby stanowisk.
+        Przed startem zawsze potwierdzamy zakres i termin.
+      </div>
 
-    <div class="note-box">
-  <strong>Dlaczego pakiet jest opłacalny?</strong><br />
-  W tabeli pokazujemy orientacyjną wartość usług, gdy byłyby zamawiane osobno.
-  Pakiet to jeden proces i jedna odpowiedzialność — dlatego cena jest niższa.<br /><br />
-  <strong>Produkcja / warsztat / prace techniczne?</strong>
-  Często potrzeba więcej stanowisk i instrukcji — doliczamy nadwyżki według prostego cennika (poniżej).<br /><br />
-  <strong>Przed realizacją zawsze potwierdzamy zakres i koszty.</strong>
-</div>
+      <ul class="actions special">
+        <li><a href="#start" class="button small scrolly">START</a></li>
+        <li><a href="#firma" class="button small scrolly">FIRMA</a></li>
+        <li><a href="#pro" class="button small scrolly">PRO</a></li>
+      </ul>
 
+      <div class="section-nav">
+        <p style="margin:0;">Chcesz od razu szczegóły dodatkowe?</p>
+        <ul class="actions special">
+          <li><a href="#porownanie" class="button small scrolly">Porównanie (tabela)</a></li>
+          <li><a href="#jednorazowa" class="button small scrolly">Jednorazowa 300 zł</a></li>
+          <li><a href="#nadwyzki" class="button small scrolly">Nadwyżki</a></li>
+          <li><a href="#faq" class="button small scrolly">FAQ</a></li>
+        </ul>
+      </div>
+    </article>
 
-<p style="font-size:0.9rem; opacity:0.8; margin-top:0.75rem;">
-  * Wszystkie ceny są cenami netto. Podatek VAT nie jest wliczony i jest doliczany zgodnie z obowiązującymi przepisami.
-</p>
+    <!-- START -->
+    <article class="post" id="start">
+      <header class="major">
+        <h2>Pakiet START</h2>
+        <p style="margin:0.75rem 0 0;">
+          Dla małej firmy, gdy chcesz “zrobić podstawy dobrze” i mieć porządek w dokumentach.
+        </p>
+      </header>
 
+      <p class="pack-line"><strong>Cena:</strong> 1 650 zł netto</p>
+      <p class="pack-line"><strong>Szkolenia BHP:</strong> do 5 pracowników</p>
+      <p class="pack-line"><strong>Ocena ryzyka:</strong> do 2 stanowisk</p>
+      <p class="pack-line"><strong>Instrukcje stanowiskowe:</strong> do 2 stanowisk</p>
+      <p class="pack-line"><strong>W cenie:</strong> dojazd, zebranie informacji na miejscu, komplet dokumentów do wdrożenia</p>
 
+      <p class="pack-meta">
+        <strong>Zwykle realizacja:</strong> 3–5 dni roboczych • <strong>Najlepszy dla:</strong> 1–5 osób i proste role (biuro/usługi/handel).
+      </p>
 
+      <ul class="actions special">
+        <li><a href="request.html?pakiet=START" class="button primary">Zamów START</a></li>
+        <li><a href="#pakiety" class="button scrolly">Wróć do pakietów</a></li>
+      </ul>
+    </article>
+
+    <!-- FIRMA -->
+    <article class="post" id="firma">
+      <header class="major">
+        <h2>Pakiet FIRMA</h2>
+        <p style="margin:0.75rem 0 0;">
+          Gdy masz kilka różnych ról i zależy Ci na dopasowanych dokumentach, a nie “uniwersalnych”.
+        </p>
+      </header>
+
+      <p class="pack-line"><strong>Cena:</strong> 3 500 zł netto</p>
+      <p class="pack-line"><strong>Szkolenia BHP:</strong> do 10 pracowników</p>
+      <p class="pack-line"><strong>Ocena ryzyka:</strong> do 3 stanowisk</p>
+      <p class="pack-line"><strong>Instrukcje stanowiskowe:</strong> do 3 stanowisk</p>
+      <p class="pack-line"><strong>W cenie:</strong> dojazd, analiza stanowisk, komplet dokumentów do wdrożenia</p>
+
+      <p class="pack-meta">
+        <strong>Zwykle realizacja:</strong> 5–7 dni roboczych • <strong>Najlepszy dla:</strong> 6–10 osób lub kilka stanowisk (magazyn/usługi/produkcja).
+      </p>
+
+      <ul class="actions special">
+        <li><a href="request.html?pakiet=FIRMA" class="button primary">Zamów FIRMA</a></li>
+        <li><a href="#pakiety" class="button scrolly">Wróć do pakietów</a></li>
+      </ul>
+    </article>
+
+    <!-- PRO -->
+    <article class="post" id="pro">
+      <header class="major">
+        <h2>Pakiet PRO</h2>
+        <p style="margin:0.75rem 0 0;">
+          Dla większych zespołów i pracy technicznej — najwygodniej, gdy chcesz spiąć wszystko jednym procesem.
+        </p>
+      </header>
+
+      <p class="pack-line"><strong>Cena:</strong> 7 000 zł netto</p>
+      <p class="pack-line"><strong>Szkolenia BHP:</strong> do 20 pracowników</p>
+      <p class="pack-line"><strong>Ocena ryzyka:</strong> do 5 stanowisk</p>
+      <p class="pack-line"><strong>Instrukcje stanowiskowe:</strong> do 5 stanowisk</p>
+      <p class="pack-line"><strong>W cenie:</strong> dojazd, analiza na miejscu, komplet dokumentów do wdrożenia</p>
+
+      <p class="pack-meta">
+        <strong>Zwykle realizacja:</strong> 7–10 dni roboczych • <strong>Najlepszy dla:</strong> prace techniczne/produkcja lub wiele różnych ról.
+      </p>
+
+      <ul class="actions special">
+        <li><a href="request.html?pakiet=PRO" class="button primary">Zamów PRO</a></li>
+        <li><a href="#pakiety" class="button scrolly">Wróć do pakietów</a></li>
+      </ul>
+    </article>
+
+    <!-- TABELA (dopiero tutaj) -->
+    <article class="post" id="porownanie">
+      <header class="major">
+        <h2>Porównanie w tabeli</h2>
+        <p>
+          Jeśli lubisz szybkie zestawienie — poniżej tabela. Na telefonie przewijasz w bok.
+        </p>
+      </header>
+
+      <div class="table-scroll" role="region" aria-label="Porównanie pakietów (przewijane na telefonie)">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Zakres</th>
+              <th>START</th>
+              <th>FIRMA</th>
+              <th>PRO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cena*</td>
+              <td class="price">1 650 zł</td>
+              <td class="price">3 500 zł</td>
+              <td class="price">7 000 zł</td>
+            </tr>
+            <tr>
+              <td>Szkolenia BHP (pracownicy)</td>
+              <td>do 5</td>
+              <td>do 10</td>
+              <td>do 20</td>
+            </tr>
+            <tr>
+              <td>Ocena ryzyka (stanowiska)</td>
+              <td>do 2</td>
+              <td>do 3</td>
+              <td>do 5</td>
+            </tr>
+            <tr>
+              <td>Instrukcje stanowiskowe</td>
+              <td>do 2</td>
+              <td>do 3</td>
+              <td>do 5</td>
+            </tr>
+            <tr>
+              <td>Dojazd + analiza na miejscu</td>
+              <td>✔</td>
+              <td>✔</td>
+              <td>✔</td>
+            </tr>
+            <tr>
+              <td>Komplet dokumentów do wdrożenia</td>
+              <td>✔</td>
+              <td>✔</td>
+              <td>✔</td>
+            </tr>
+            <tr>
+              <td>Zwykle realizacja</td>
+              <td>3–5 dni</td>
+              <td>5–7 dni</td>
+              <td>7–10 dni</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-hint">Na telefonie: przesuń tabelę w bok, aby zobaczyć wszystkie kolumny.</p>
+
+      <p style="font-size:0.9rem; opacity:0.8; margin-top:0.5rem;">
+        * Wszystkie ceny są cenami netto. Podatek VAT nie jest wliczony i jest doliczany zgodnie z obowiązującymi przepisami.
+      </p>
 
       <ul class="actions special">
         <li><a href="request.html" class="button primary">Zgłoś firmę</a></li>
       </ul>
     </article>
 
-    <!-- Jednorazowa + nadwyżki -->
-    <article class="post" id="nadwyzki">
+    <!-- JEDNORAZOWA -->
+    <article class="post" id="jednorazowa">
       <header class="major">
-        <h2>Usługa jednorazowa i nadwyżki</h2>
-        <p>Jeśli chcesz zrobić mały krok „na start” albo przekraczasz limity pakietu.</p>
+        <h2>Usługa jednorazowa: 300 zł</h2>
+        <p>
+          Opcja “na start” — gdy potrzebujesz jednej czynności szybko, bez wchodzenia w pakiet.
+        </p>
       </header>
 
-      <div class="cols">
-        <div>
-          <h3>Start BHP – 300 zł</h3>
-          <p style="margin: 0.6rem 0 1rem;">
-  <strong>Opcja jednorazowa</strong> — gdy potrzebujesz <strong>jednej</strong> czynności „na już”.
-  Przy 2–3 osobach i więcej pakiet jest zdecydowanie korzystniejszy.
-</p>
+      <p class="pack-line"><strong>300 zł = 1 czynność:</strong> szkolenie 1 osoby <em>albo</em> ocena 1 stanowiska <em>albo</em> 1 instrukcja stanowiskowa</p>
+      <p class="pack-line"><strong>Zwykle realizacja:</strong> 1–2 dni robocze</p>
 
-          <ul>
-            <li><strong>300 zł = 1 czynność:</strong> szkolenie 1 osoby <em>albo</em> ocena 1 stanowiska <em>albo</em> 1 instrukcja stanowiskowa</li>
-            <li>Szybka checklista: co zrobić dalej, żeby firma była „ogarnięta”</li>
-            <li>Realizacja zwykle: 1–2 dni robocze</li>
-          </ul>
-          <p><strong>Przy 2–3 osobach i więcej — pakiet wychodzi dużo lepiej.</strong></p>
-        </div>
+      <ul class="actions special">
+        <li><a href="request.html?pakiet=quick" class="button primary">Zgłoś jednorazową usługę</a></li>
+      </ul>
+    </article>
 
-        <div>
-          <h3>Nadwyżki (dla klientów z pakietem)</h3>
-          <ul>
-            <li>Dodatkowe szkolenie pracownika → <strong>220 zł</strong></li>
-            <li>Dodatkowa ocena ryzyka (1 stanowisko) → <strong>350 zł</strong></li>
-            <li>Dodatkowa instrukcja stanowiskowa → <strong>280 zł</strong></li>
-          </ul>
-          <p>Przykład: START + 2 osoby ponad limit = +440 zł.</p>
-        </div>
-      </div>
+    <!-- NADWYŻKI -->
+    <article class="post" id="nadwyzki">
+      <header class="major">
+        <h2>Nadwyżki (dla klientów z pakietem)</h2>
+        <p>
+          Jeśli firma rośnie albo potrzebujesz dodatkowych stanowisk — dopłacasz tylko za konkretny element.
+        </p>
+      </header>
+
+      <p class="pack-line">Dodatkowe szkolenie pracownika → <strong>220 zł</strong></p>
+      <p class="pack-line">Dodatkowa ocena ryzyka (1 stanowisko) → <strong>350 zł</strong></p>
+      <p class="pack-line">Dodatkowa instrukcja stanowiskowa → <strong>280 zł</strong></p>
 
       <ul class="actions special">
         <li><a href="request.html" class="button primary">Wyślij zgłoszenie</a></li>
@@ -277,52 +377,52 @@
 
       <div class="faq">
         <details>
-          <summary>Co dokładnie zawiera pakiet?</summary>
-          <p>Dojazd (Płońsk i okolice), zebranie informacji na miejscu, analiza stanowisk, komplet dokumentów do wdrożenia oraz szkolenia, oceny ryzyka i instrukcje — w ramach limitu pakietu.</p>
+          <summary>Jaki pakiet wybrać?</summary>
+          <p>
+            Najprościej: <strong>START</strong> przy 1–5 osobach,
+            <strong>FIRMA</strong> przy 6–10 osobach lub kilku rolach,
+            <strong>PRO</strong> przy większej skali i pracy technicznej/produkcyjnej.
+            Jeśli nie chcesz zgadywać — napisz w zgłoszeniu liczbę osób i stanowiska, dobierzemy za Ciebie.
+          </p>
         </details>
 
         <details>
-          <summary>Ile trwa realizacja?</summary>
-          <p>START: zwykle 3–5 dni roboczych. FIRMA: 5–7 dni. PRO: 7–10 dni. Dokładny termin potwierdzamy po zebraniu danych.</p>
+          <summary>Co dokładnie zawiera pakiet?</summary>
+          <p>
+            Dojazd (Płońsk i okolice), zebranie informacji na miejscu, analiza stanowisk,
+            komplet dokumentów do wdrożenia oraz szkolenia, oceny ryzyka i instrukcje — w ramach limitu pakietu.
+          </p>
         </details>
 
         <details>
           <summary>Czy dojazd jest wliczony?</summary>
-          <p>Tak — Płońsk i okolice (ok. 40 km) w cenie pakietu. Dalsze lokalizacje wyceniamy z góry.</p>
+          <p>
+            Tak — Płońsk i okolice (ok. 40 km) w cenie pakietu. Dalsze lokalizacje wyceniamy z góry.
+          </p>
         </details>
 
         <details>
           <summary>Co jeśli przekroczę limity?</summary>
-          <p>Dopłacasz tylko za nadwyżki według cennika (220–350 zł za element). Bez niespodzianek.</p>
+          <p>
+            Dopłacasz tylko za nadwyżki według cennika. Bez niespodzianek.
+          </p>
         </details>
 
         <details>
           <summary>PPOŻ i medycyna pracy?</summary>
-          <p>Organizujemy partnersko — jeśli potrzebujesz, napisz w zgłoszeniu, a doradzimy najprostsze rozwiązanie.</p>
+          <p>
+            Organizujemy partnersko — jeśli potrzebujesz, napisz w zgłoszeniu, a doradzimy najprostsze rozwiązanie.
+          </p>
         </details>
-
-        <details>
-  <summary>Dlaczego w pakietach jest taniej niż „usługi osobno”?</summary>
-  <p>
-    Bo pakiet to jeden proces: zbieramy dane na miejscu, analizujemy stanowiska i przygotowujemy komplet dokumentów do wdrożenia.
-    Przy zamawianiu elementów osobno każda usługa jest liczona oddzielnie. W pakiecie optymalizujemy czas i organizację pracy,
-    a Ty dostajesz spójny zestaw BHP.
-  </p>
-</details>
-
-
-
-
       </div>
-
-      <p style="opacity:0.85; margin-top:1.25rem;">
-  Pakiety obejmują szkolenia oraz opracowanie ocen ryzyka i instrukcji stanowiskowych dla wskazanej liczby stanowisk.
-  Dokumentacja ogólna ma charakter pomocniczy i nie stanowi prowadzenia pełnej dokumentacji BHP w firmie.
-</p>
 
       <ul class="actions special" style="margin-top:1.25rem;">
         <li><a href="request.html" class="button primary">Zgłoś firmę</a></li>
       </ul>
+
+      <p class="back-top">
+        <a href="#top" class="scrolly">Wróć na górę ↑</a>
+      </p>
     </article>
 
   </div>
