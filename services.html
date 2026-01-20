@@ -14,7 +14,6 @@
   <style>
     /* Minimal, Massively-friendly */
 
-    /* CTA + mała nawigacja (po pakietach, nie w hero) */
     .section-nav {
       margin-top: 1.25rem;
       padding-top: 1rem;
@@ -31,7 +30,6 @@
     }
     .section-nav .actions.special li { padding: 0; margin: 0; }
 
-    /* Krótki note-box (bez ściany tekstu) */
     .note-box {
       background: rgba(0,0,0,0.03);
       border: 1px solid rgba(0,0,0,0.10);
@@ -41,7 +39,6 @@
       font-size: 0.98rem;
     }
 
-    /* Tabela: scroll na mobile */
     .table-scroll {
       width: 100%;
       overflow-x: auto;
@@ -56,7 +53,7 @@
       border-collapse: collapse;
       margin: 0;
       font-size: 0.98rem;
-      min-width: 760px; /* wymusza przewijanie na telefonie */
+      min-width: 760px;
     }
     .comparison-table th, .comparison-table td {
       border: 1px solid rgba(0,0,0,0.15);
@@ -78,14 +75,7 @@
       letter-spacing: 0.5px;
       white-space: nowrap;
     }
-    .table-hint {
-      font-size: 0.9rem;
-      opacity: 0.75;
-      text-align: center;
-      margin: 0 0 1.25rem;
-    }
 
-    /* FAQ */
     .faq details {
       margin: 0.8rem 0;
       padding: 1rem;
@@ -101,7 +91,6 @@
 
     .pack-line { margin: 0.55rem 0; }
     .pack-meta { margin-top: 0.85rem; opacity: 0.9; font-size: 0.95rem; }
-
     .back-top { text-align:center; margin-top:1.25rem; opacity:0.85; }
   </style>
 </head>
@@ -132,7 +121,7 @@
   <!-- Main -->
   <div id="main">
 
-    <!-- HERO (bez nawigacji “pulpitu”) -->
+    <!-- HERO -->
     <article class="post featured" id="top">
       <header class="major">
         <span class="date">Pakiety BHP</span>
@@ -151,7 +140,7 @@
       </header>
     </article>
 
-    <!-- PAKIETY – najpierw opis, potem tabela -->
+    <!-- PAKIETY -->
     <article class="post" id="pakiety">
       <header class="major">
         <h2>Pakiety BHP</h2>
@@ -163,7 +152,7 @@
 
       <div class="note-box">
         Pakiet obejmuje szkolenia oraz przygotowanie ocen ryzyka i instrukcji dla określonej liczby stanowisk.
-        Przed startem zawsze potwierdzamy zakres i termin.
+        Czas realizacji ustalamy po zebraniu danych (szkolenia często można zrobić szybko, dokumentacja wymaga analizy).
       </div>
 
       <ul class="actions special">
@@ -199,7 +188,8 @@
       <p class="pack-line"><strong>W cenie:</strong> dojazd, zebranie informacji na miejscu, komplet dokumentów do wdrożenia</p>
 
       <p class="pack-meta">
-        <strong>Zwykle realizacja:</strong> 3–5 dni roboczych • <strong>Najlepszy dla:</strong> 1–5 osób i proste role (biuro/usługi/handel).
+        <strong>Czas realizacji:</strong> ustalamy po zebraniu danych •
+        szkolenia często można zrobić szybko, a dokumentacja wymaga analizy stanowisk.
       </p>
 
       <ul class="actions special">
@@ -224,7 +214,8 @@
       <p class="pack-line"><strong>W cenie:</strong> dojazd, analiza stanowisk, komplet dokumentów do wdrożenia</p>
 
       <p class="pack-meta">
-        <strong>Zwykle realizacja:</strong> 5–7 dni roboczych • <strong>Najlepszy dla:</strong> 6–10 osób lub kilka stanowisk (magazyn/usługi/produkcja).
+        <strong>Czas realizacji:</strong> ustalamy po zebraniu danych •
+        szkolenia można robić etapami, dokumentacja powstaje po analizie warunków pracy.
       </p>
 
       <ul class="actions special">
@@ -249,7 +240,8 @@
       <p class="pack-line"><strong>W cenie:</strong> dojazd, analiza na miejscu, komplet dokumentów do wdrożenia</p>
 
       <p class="pack-meta">
-        <strong>Zwykle realizacja:</strong> 7–10 dni roboczych • <strong>Najlepszy dla:</strong> prace techniczne/produkcja lub wiele różnych ról.
+        <strong>Czas realizacji:</strong> ustalamy po zebraniu danych •
+        przy większej liczbie stanowisk dokumentacja zależy od dostępności osób i warunków w firmie.
       </p>
 
       <ul class="actions special">
@@ -258,13 +250,10 @@
       </ul>
     </article>
 
-    <!-- TABELA (dopiero tutaj) -->
+    <!-- TABELA -->
     <article class="post" id="porownanie">
       <header class="major">
         <h2>Porównanie w tabeli</h2>
-        <p>
-          Jeśli lubisz szybkie zestawienie — poniżej tabela. Na telefonie przewijasz w bok.
-        </p>
       </header>
 
       <div class="table-scroll" role="region" aria-label="Porównanie pakietów (przewijane na telefonie)">
@@ -314,16 +303,9 @@
               <td>✔</td>
               <td>✔</td>
             </tr>
-            <tr>
-              <td>Zwykle realizacja</td>
-              <td>3–5 dni</td>
-              <td>5–7 dni</td>
-              <td>7–10 dni</td>
-            </tr>
           </tbody>
         </table>
       </div>
-      <p class="table-hint">Na telefonie: przesuń tabelę w bok, aby zobaczyć wszystkie kolumny.</p>
 
       <p style="font-size:0.9rem; opacity:0.8; margin-top:0.5rem;">
         * Wszystkie ceny są cenami netto. Podatek VAT nie jest wliczony i jest doliczany zgodnie z obowiązującymi przepisami.
@@ -344,7 +326,6 @@
       </header>
 
       <p class="pack-line"><strong>300 zł = 1 czynność:</strong> szkolenie 1 osoby <em>albo</em> ocena 1 stanowiska <em>albo</em> 1 instrukcja stanowiskowa</p>
-      <p class="pack-line"><strong>Zwykle realizacja:</strong> 1–2 dni robocze</p>
 
       <ul class="actions special">
         <li><a href="request.html?pakiet=quick" class="button primary">Zgłoś jednorazową usługę</a></li>
