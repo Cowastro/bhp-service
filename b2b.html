@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+  <title>BHP Services – Współpraca B2B</title>
+  <meta name="description" content="Współpraca B2B: BHP, PPOŻ i medycyna pracy. Otrzymuj zapytania od klientów z Twojego regionu. Zgłoszenie partnerskie online." />
+  <meta name="robots" content="index,follow" />
+
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+  <style>
+    /* Massively-friendly, bez agresywnych kolorów */
+    .field .error-text {
+      display: none;
+      margin-top: 0.4rem;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .field.is-error input,
+    .field.is-error select,
+    .field.is-error textarea {
+      border-color: rgba(209, 26, 42, 0.9) !important;
+      box-shadow: 0 0 0 2px rgba(209, 26, 42, 0.12);
+    }
+    .field.is-error .error-text {
+      display: block;
+      color: rgba(209, 26, 42, 0.95);
+    }
+
+    .field.is-ok input,
+    .field.is-ok select,
+    .field.is-ok textarea {
+      border-color: rgba(46, 204, 113, 0.55) !important;
+    }
+
+    .consent-row.is-error {
+      border: 1px solid rgba(209, 26, 42, 0.9);
+      border-radius: 6px;
+      padding: 0.9rem;
+      background: rgba(209, 26, 42, 0.05);
+    }
+
+    .honeypot { display: none; }
+
+    .how-grid {
+      margin-top: 1.5rem;
+    }
+    .how-grid ul {
+      margin: 0;
+    }
+    .how-grid li {
+      margin-bottom: 0.6rem;
+    }
+
+    .hint {
+      margin: 0.35rem 0 0 0;
+      font-size: 0.9em;
+      opacity: 0.75;
+    }
+  </style>
+</head>
+
+<body class="is-preload">
+<div id="wrapper" class="fade-in">
+
+  <header id="header">
+    <a href="index.html" class="logo">BHP Services</a>
+  </header>
+
+  <nav id="nav">
+    <ul class="links">
+      <li><a href="index.html">Start</a></li>
+      <li><a href="services.html">Pakiety</a></li>
+      <li><a href="request.html">Zgłoszenie</a></li>
+      <li class="active"><a href="b2b.html">Współpraca B2B</a></li>
+      <li><a href="kb/index.html">Baza wiedzy</a></li>
+    </ul>
+    <ul class="icons">
+      <li><a href="tel:+48574889505" class="icon solid fa-phone"><span class="label">Telefon</span></a></li>
+      <li><a href="mailto:kontakt@bhp-services.pl" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+    </ul>
+  </nav>
+
+  <div id="main">
+
+    <article class="post featured">
+      <header class="major">
+        <span class="date">Współpraca partnerska</span>
+        <h1>Współpraca B2B</h1>
+
+        <p style="font-size:1.15rem; margin:1.2rem 0;">
+          Budujemy sieć sprawdzonych partnerów w całej Polsce (BHP / PPOŻ / medycyna pracy).<br />
+          Jeśli obsługujesz konkretny region — możesz otrzymywać zapytania od klientów.
+        </p>
+
+        <ul class="actions special">
+          <li><a href="#jak" class="button scrolly">Jak to działa</a></li>
+          <li><a href="#formularz" class="button primary scrolly">Zgłoś się jako partner</a></li>
+        </ul>
+      </header>
+    </article>
+
+    <article class="post" id="jak">
+      <header class="major">
+        <h2>Jak działa współpraca</h2>
+        <p>
+          Prosto i bez “umów na 30 stron”. Zależy nam na jakości i terminowości.
+        </p>
+      </header>
+
+      <div class="how-grid">
+        <ul>
+          <li><strong>1) Ty podajesz region i zakres usług</strong> (np. województwo, miasta, dojazdy).</li>
+          <li><strong>2) My kierujemy zapytania</strong> z Twojego regionu — kontaktujesz się z klientem bezpośrednio.</li>
+          <li><strong>3) Wspólnie pilnujemy jakości</strong> — partner ma być “pewny”, bo budujemy markę na lata.</li>
+        </ul>
+
+        <p class="hint">
+          Na start działamy lokalnie, ale skalujemy ogólnopolsko — dlatego ten formularz jest ważny.
+        </p>
+      </div>
+    </article>
+
+    <article class="post" id="formularz">
+      <header class="major">
+        <h2>Formularz zgłoszeniowy</h2>
+        <p>
+          Wypełnij poniższe pola — odezwiemy się w ciągu 1–2 dni roboczych.
+          Jeśli wolisz: <a href="tel:+48574889505">zadzwoń</a> lub napisz na
+          <a href="mailto:kontakt@bhp-services.pl">kontakt@bhp-services.pl</a>.
+        </p>
+      </header>
+
+      <form id="b2bForm" method="post" action="#" novalidate>
+        <div class="honeypot">
+          <input type="text" name="website_url" autocomplete="off" />
+        </div>
+
+        <div class="fields">
+
+          <div class="field half">
+            <label for="company">Nazwa firmy *</label>
+            <input type="text" name="company" id="company" placeholder="Nazwa firmy / JDG" required autocomplete="organization" />
+            <p class="error-text" data-error-for="company"></p>
+          </div>
+
+          <div class="field half">
+            <label for="person">Osoba kontaktowa *</label>
+            <input type="text" name="person" id="person" placeholder="Imię i nazwisko" required autocomplete="name" />
+            <p class="error-text" data-error-for="person"></p>
+          </div>
+
+          <div class="field half">
+            <label for="phone">Telefon *</label>
+            <input type="tel" name="phone" id="phone" placeholder="+48 123 456 789" required inputmode="tel" autocomplete="tel" />
+            <p class="error-text" data-error-for="phone"></p>
+          </div>
+
+          <div class="field half">
+            <label for="email">Email *</label>
+            <input type="email" name="email" id="email" placeholder="kontakt@firma.pl" required autocomplete="email" />
+            <p class="error-text" data-error-for="email"></p>
+          </div>
+
+          <div class="field">
+            <label for="area">Region działania *</label>
+            <input type="text" name="area" id="area" placeholder="np. woj. mazowieckie, okolice Łodzi, cała Polska" required />
+            <p class="error-text" data-error-for="area"></p>
+            <p class="hint">Im konkretniej, tym łatwiej kierować zapytania (miasta / promień / województwa).</p>
+          </div>
+
+          <div class="field">
+            <label for="scope">Zakres usług *</label>
+            <select name="scope" id="scope" required>
+              <option value="">— wybierz —</option>
+              <option value="bhp">BHP</option>
+              <option value="ppoz">PPOŻ</option>
+              <option value="medycyna_pracy">Medycyna pracy</option>
+              <option value="inne">Inne (opisz w wiadomości)</option>
+            </select>
+            <p class="error-text" data-error-for="scope"></p>
+          </div>
+
+          <div class="field">
+            <label for="message">Dodatkowe informacje (opcjonalnie)</label>
+            <textarea name="message" id="message" rows="4" placeholder="Np. specjalizacja, terminy realizacji, stała obsługa, uprawnienia, link do strony..."></textarea>
+          </div>
+
+          <div class="field">
+            <div class="consent-row" id="consentRow">
+              <input type="checkbox" id="consent" name="consent" value="yes" required />
+              <label for="consent">
+                Wyrażam zgodę na kontakt w sprawie współpracy. *
+                <span class="consent-note">
+                  <a href="privacy.html" target="_blank" rel="noopener">Polityka prywatności</a>
+                </span>
+              </label>
+            </div>
+            <p class="error-text" data-error-for="consent"></p>
+          </div>
+
+        </div>
+
+        <ul class="actions special">
+          <li><input id="b2bSubmit" type="submit" value="Wyślij zgłoszenie" class="primary" /></li>
+        </ul>
+
+        <p id="formMsg" style="text-align:center; margin-top:1rem; font-weight:500; display:none;"></p>
+      </form>
+    </article>
+
+  </div>
+
+  <footer id="footer">
+    <section class="split contact">
+      <section class="alt">
+        <h3>Adres</h3>
+        <p>09-100 Płońsk, Szkolna 35A</p>
+      </section>
+      <section>
+        <h3>Telefon</h3>
+        <p><a href="tel:+48574889505">+48 574 889 505</a></p>
+      </section>
+      <section>
+        <h3>Email</h3>
+        <p><a href="mailto:kontakt@bhp-services.pl">kontakt@bhp-services.pl</a></p>
+      </section>
+      <section>
+        <h3>Dokumenty</h3>
+        <p><a href="privacy.html">Polityka prywatności</a></p>
+      </section>
+    </section>
+  </footer>
+
+  <div id="copyright">
+    <ul>
+      <li>&copy; BHP Services</li>
+      <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+    </ul>
+  </div>
+
+</div>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script>
+  const form = document.getElementById('b2bForm');
+  const msg = document.getElementById('formMsg');
+  const btn = document.getElementById('b2bSubmit');
+
+  function normalizePhone(raw) {
+    let d = (raw || '').trim().replace(/\D/g, '');
+    if (!d) return null;
+
+    if (d.startsWith('0048')) d = d.slice(4);
+    if (d.startsWith('48') && d.length === 11) d = d.slice(2);
+
+    if (d.length !== 9) return null;
+    return '+48 ' + d.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3');
+  }
+
+  function setError(id, text) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.closest('.field')?.classList.remove('is-ok');
+    el.closest('.field')?.classList.add('is-error');
+    const errorEl = document.querySelector('.error-text[data-error-for="' + id + '"]');
+    if (errorEl) errorEl.textContent = text;
+  }
+
+  function clearError(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.closest('.field')?.classList.remove('is-error');
+    el.closest('.field')?.classList.add('is-ok');
+    const errorEl = document.querySelector('.error-text[data-error-for="' + id + '"]');
+    if (errorEl) errorEl.textContent = '';
+  }
+
+  function validate() {
+    let valid = true;
+    let firstEl = null;
+
+    // honeypot
+    if (document.querySelector('[name="website_url"]').value.trim()) {
+      return { ok: false, silent: true };
+    }
+
+    const requiredIds = ['company', 'person', 'phone', 'email', 'area', 'scope'];
+
+    requiredIds.forEach(id => {
+      const el = document.getElementById(id);
+      const val = (el && el.value) ? el.value.trim() : '';
+      if (!val) {
+        setError(id, 'Wymagane pole');
+        valid = false;
+        firstEl = firstEl || el;
+      } else {
+        clearError(id);
+      }
+    });
+
+    // phone format
+    const phoneEl = document.getElementById('phone');
+    const phone = normalizePhone(phoneEl.value);
+    if (!phone) {
+      setError('phone', 'Wpisz numer (9 cyfr), np. +48 574 889 505');
+      valid = false;
+      firstEl = firstEl || phoneEl;
+    } else {
+      phoneEl.value = phone;
+    }
+
+    // email format
+    const emailEl = document.getElementById('email');
+    const email = emailEl.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError('email', 'Niepoprawny email');
+      valid = false;
+      firstEl = firstEl || emailEl;
+    }
+
+    // consent
+    const consent = document.getElementById('consent');
+    const consentRow = document.getElementById('consentRow');
+    if (!consent.checked) {
+      consentRow.classList.add('is-error');
+      const err = document.querySelector('.error-text[data-error-for="consent"]');
+      if (err) err.textContent = 'Zaznacz zgodę';
+      valid = false;
+      firstEl = firstEl || consent;
+    } else {
+      consentRow.classList.remove('is-error');
+      const err = document.querySelector('.error-text[data-error-for="consent"]');
+      if (err) err.textContent = '';
+    }
+
+    return { ok: valid, firstInvalid: firstEl };
+  }
+
+  function showMsg(text, ok) {
+    msg.style.display = 'block';
+    msg.style.opacity = '0.95';
+    msg.style.color = ok ? 'rgba(46, 125, 50, 0.95)' : 'rgba(209, 26, 42, 0.95)';
+    msg.textContent = text;
+  }
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const res = validate();
+    if (!res.ok) {
+      if (!res.silent) {
+        showMsg('Sprawdź wymagane pola.', false);
+        res.firstInvalid?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        res.firstInvalid?.focus?.({ preventScroll: true });
+      }
+      return;
+    }
+
+    btn.disabled = true;
+    showMsg('Dziękujemy. Odezwiemy się wkrótce.', true);
+
+    setTimeout(() => window.location.href = 'thank-you.html', 900);
+  });
+
+  // live clear
+  ['company','person','phone','email','area','scope'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('input', () => clearError(id));
+    el.addEventListener('change', () => clearError(id));
+  });
+  document.getElementById('consent')?.addEventListener('change', () => {
+    document.getElementById('consentRow')?.classList.remove('is-error');
+    const err = document.querySelector('.error-text[data-error-for="consent"]');
+    if (err) err.textContent = '';
+  });
+</script>
+
+</body>
+</html>
